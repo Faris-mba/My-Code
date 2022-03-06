@@ -1,0 +1,117 @@
+<html>
+	<head>
+		<title>Demo Form</title>
+		
+		
+	</head>
+	<style>                            
+		body {
+			background-image:url({{url_for('static',filename='k.jpg')}})
+		}
+
+		body {
+			font-size:20px;
+			text-align: center;
+			font-family: serif;
+		}
+
+		h2 {
+			font-family: Verdana;
+			text-align: center;
+			
+		}
+
+        p2 {
+			color:rgb(57, 197, 2);
+		}
+
+		p3 {
+			color: crimson;
+		}
+
+		
+		.btn {
+			background-color: darkcyan;
+			border:none;
+			color: white;
+			padding: 10px;
+			text-align: center;
+
+		}
+
+	</style>
+
+	<body>
+		
+		<div class="container"><br />
+			<center>
+				<h2>GIC feedback</h2>
+			</center>
+		</div>
+		
+		<div class="container"><br />
+		<div class="row align-items-center justify-content-center">
+		<div class="col-md-4">
+			<form action="" method="post" role="form">
+				
+				<div class="form-group">                                  <!-- create Input fields -->
+					<label for="name">Name:</label>
+					<br />
+					<input type="text" class="form-control" id="name" name="name" 																	placeholder="Name?">
+						<br />
+						<br />
+						
+					<label for="GICNumber">GIC Number:</label>
+					<br />
+					<input type="text" class="form-control" id="GICNumber" name="GICNumber" 															placeholder="Your GIC Number?">
+						<br />
+						<br />
+						
+					<label for="email">Email:</label>
+					<br />
+					<input type="text" class="form-control" id="email" name="email" 															placeholder="Your Email  Address?">
+						<br />
+						<br />
+					
+					<label for="question1">To what extent did you benefit from the course?</label>
+					<br />
+					<input type="text" class="form-control" id="question1" name="question1" 													placeholder="your answer?">
+						<br />
+						<br />
+
+						<label for="question2">What are the negatives and positives that you found in the course?</label>
+						<br />
+					<input type="text" class="form-control" id="question2" name="question2" 													placeholder="your answer?">
+						<br />
+						<br />
+				</div>		
+				<br />
+				<center>                                                           <!--for the submiation button-->
+					<button type="submit" class="btn btn-success">Submit</button>
+				</center>
+			</form>
+			<br />
+				{% with messages  = get_flashed_messages(with_categories=true) %}
+					{% if messages %}
+				{% for message in messages %}                                     <!--the flash massage success and error-->
+					{% if "Error" not in message[1]: %}
+						<div class="alert alert-info">
+					<p2>	<strong>Success! </strong> {{ message[1] }} </p2>
+						</div>
+					
+					{% endif %}
+					{% if "Error" in message[1]: %}
+						<div class="alert alert-danger">
+					<p3>	<strong>Error: </strong> {{ message[1] }}
+						</div>
+					{% endif %}
+				{% endfor %}
+					{% endif %}
+				{% endwith %}
+					</p3>
+		</div>
+		<br />
+		</div>
+		</div>
+	</body>
+</html>
